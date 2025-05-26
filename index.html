@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FreeFlix - Unlimited Netflix Access</title>
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow-x: hidden;
+      background: 
+        url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1280&q=80') center center / cover no-repeat,
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        url('https://m.media-amazon.com/images/I/51NiGlapXlL._AC_SY445_.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/0/0a/Avengers_Endgame_poster.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/6/66/Inception_ver3.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/7/7a/1917poster.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/9/99/Black_Panther_film_poster.jpg');
+      background-position:
+        top left, top right, center top, bottom left, bottom right, center bottom;
+      background-repeat: no-repeat;
+      background-size: 20% auto;
+      filter: brightness(0.25) blur(10px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+      background-color: rgba(0,0,0,0.55);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e50914;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #e50914;
+      letter-spacing: 3px;
+      user-select: none;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #e50914;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 12px #e50914;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: #ddd;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-primary {
+      background-color: #e50914;
+      color: #fff;
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(229, 9, 20, 0.7);
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #b00611;
+      box-shadow: 0 7px 20px rgba(176, 6, 17, 0.9);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    section h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #e50914;
+      display: inline-block;
+      padding-bottom: 0.25rem;
+      user-select: none;
+    }
+
+    /* About Section */
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 850px;
+      margin: 0 auto;
+      color: #ddd;
+    }
+
+    /* Features Section */
+    #features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-card h4 {
+      margin-bottom: 1rem;
+      color: #e50914;
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      color: #eee;
+      line-height: 1.4;
+    }
+
+    /* How It Works Section */
+    #how-it-works ol {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #ddd;
+      padding-left: 1.5rem;
+    }
+
+    /* Contact Section */
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    #contact input, 
+    #contact textarea {
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      resize: none;
+      font-family: inherit;
+    }
+
+    #contact textarea {
+      min-height: 120px;
+    }
+
+    #contact button {
+      background-color: #e50914;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(229, 9, 20, 0.7);
+      transition: background-color 0.3s ease;
+    }
+
+    #contact button:hover {
+      background-color: #b00611;
+      box-shadow: 0 7px 20px rgba(176, 6, 17, 0.9);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #bbb;
+      user-select: none;
+      letter-spacing: 1px;
+      margin-top: 3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FreeFlix</h1>
+      <nav>
+        <a href="#about">About Us</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Unlimited Netflix Access for Everyone</h2>
+      <p>FreeFlix provides you with safe, secure, and affordable access to Netflix’s vast library of movies and series. No hidden fees. No hassle. Just pure entertainment.</p>
+      <a href="http://104.250.236.227:5000/" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Started Now</a>
+    </section>
+
+    <section id="about">
+      <h3>About FreeFlix</h3>
+      <p>
+        Established in 2023, FreeFlix is a pioneering company dedicated to bringing the best of Netflix to users around the globe. We leverage advanced technologies and partnerships to provide seamless, reliable, and affordable Netflix streaming access — all within a secure and user-friendly platform.
+      </p>
+    </section>
+
+    <section id="features">
+      <h3>Features</h3>
+      <div class="feature-card">
+        <h4>Wide Netflix Access</h4>
+        <p>Enjoy unrestricted access to Netflix’s entire library of movies, shows, and documentaries without geographical restrictions.</p>
+      </div>
+      <div class="feature-card">
+        <h4>High-Speed Streaming</h4>
+        <p>Experience buffer-free streaming with our optimized servers designed to handle high traffic and deliver quality video.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Multiple Device Support</h4>
+        <p>Stream on any device you prefer — smartphones, tablets, smart TVs, or desktops — all with a single account.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Secure & Private</h4>
+        <p>Your privacy is our priority. We ensure secure connections and data protection with end-to-end encryption.</p>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <h3>How It Works</h3>
+      <ol>
+        <li>Sign up and create your FreeFlix account with simple steps.</li>
+        <li>Choose your preferred subscription plan tailored to your needs.</li>
+        <li>Access Netflix content through our proprietary streaming portal or supported devices.</li>
+        <li>Enjoy unlimited streaming with dedicated customer support available 24/7.</li>
+      </ol>
+    </section>
+
+    <section id="contact">
+      <h3>Contact Us</h3>
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Full Name" required />
+        <input type="email" name="email" placeholder="Your Email Address" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 FreeFlix, Inc. All rights reserved. | <a href="#" style="color:#e50914; text-decoration:none;">Privacy Policy</a> | <a href="#" style="color:#e50914; text-decoration:none;">Terms of Service</a>
+  </footer>
+</body>
+</html>
