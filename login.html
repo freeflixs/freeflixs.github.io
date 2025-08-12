@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Facebook - Log In or Sign Up</title>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      user-select: none;
+    }
+    .login-container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+      width: 360px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 48px;
+      color: #1877f2;
+      font-weight: bold;
+      margin-bottom: 30px;
+      user-select: none;
+    }
+    form input[type="text"],
+    form input[type="password"] {
+      width: 100%;
+      padding: 14px 12px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #dddfe2;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    form input[type="text"]:focus,
+    form input[type="password"]:focus {
+      border-color: #1877f2;
+    }
+    form button {
+      width: 100%;
+      padding: 14px;
+      background: #1877f2;
+      border: none;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    form button:hover {
+      background: #165ec9;
+    }
+    .forgot-password {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #1877f2;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+    .signup-section {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #606770;
+    }
+    .signup-section a {
+      color: #1877f2;
+      font-weight: bold;
+      text-decoration: none;
+      margin-left: 5px;
+    }
+    .signup-section a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container" role="main" aria-label="Facebook Login Form">
+    <div class="logo" aria-label="Facebook Logo">facebook</div>
+    <form id="loginForm" action="#" method="POST" autocomplete="on" aria-describedby="loginHelp">
+      <input type="text" name="email" placeholder="Email or phone number" required aria-required="true" autocomplete="username" />
+      <input type="password" name="password" placeholder="Password" required aria-required="true" autocomplete="current-password" />
+      <button type="submit">Log In</button>
+    </form>
+    <a href="#" class="forgot-password" tabindex="0">Forgot Password?</a>
+    <div class="signup-section">
+      Don't have an account?
+      <a href="#" tabindex="0">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Demo: You can replace this with real login logic
+      alert('Login submitted!');
+    });
+  </script>
+</body>
+</html>
