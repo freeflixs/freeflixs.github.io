@@ -1,951 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="description" content="The Eye Of Cyber - Elite Cyber Security Company founded by Humayun Ali Khan. Specializing in Red Teaming, Pentesting, SIEM, Cloud Security, and Data Protection. Academy offering offensive & defensive security programs.">
-  <meta name="author" content="The Eye Of Cyber">
-  <title>The Eye Of Cyber | Elite Cyber Security Company & Academy</title>
-  <!-- Google Fonts & Font Awesome 6 -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FreeFlix - Unlimited Netflix Access</title>
   <style>
+    /* Reset & base */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    :root {
-      --primary: #00f2c0;
-      --primary-dark: #00c9a0;
-      --primary-glow: rgba(0, 242, 192, 0.25);
-      --dark-bg: #070b14;
-      --dark-card: #0e121f;
-      --dark-surface: #0a0f1a;
-      --gray-text: #a0a8c0;
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --whatsapp: #25D366;
-      --offensive: #ff4d4d;
-      --defensive: #4d79ff;
-    }
-
-    body {
-      background-color: var(--dark-bg);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #ffffff;
-      line-height: 1.5;
-      scroll-behavior: smooth;
+    body, html {
+      height: 100%;
       overflow-x: hidden;
+      background: 
+        url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1280&q=80') center center / cover no-repeat,
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+      color: #fff;
+      scroll-behavior: smooth;
     }
 
-    /* Custom Scroll */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0f121f;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 10px;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    h1, h2, h3, h4, .logo-text {
-      font-family: 'Space Grotesk', monospace;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: 2.25rem;
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    h2:after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 3px;
-      animation: slideIn 0.6s ease-out;
-    }
-
-    @keyframes slideIn {
-      from { width: 0; opacity: 0; }
-      to { width: 60px; opacity: 1; }
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    .section-header h2:after {
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-    }
-    .section-subtitle {
-      color: var(--gray-text);
-      max-width: 700px;
-      margin: 1.2rem auto 0;
-      font-size: 1.1rem;
-    }
-
-    /* Button Styles with Hover Effects */
-    .btn-primary {
-      background: var(--primary);
-      color: #03050b;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: none;
-      font-size: 0.95rem;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary:before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-    .btn-primary:hover:before {
-      width: 300px;
-      height: 300px;
-    }
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px var(--primary-glow);
-    }
-    .btn-outline {
-      border: 1.5px solid var(--primary);
-      background: transparent;
-      padding: 12px 28px;
-      border-radius: 40px;
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-outline:hover {
-      background: rgba(0, 242, 192, 0.1);
-      border-color: var(--primary-dark);
-      transform: translateX(5px);
-    }
-    .btn-whatsapp {
-      background: var(--whatsapp);
-      color: #0a0c12;
-      font-weight: 700;
-      padding: 12px 28px;
-      border-radius: 40px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-    }
-    .btn-whatsapp:hover {
-      background: #1da859;
-      transform: scale(1.02) translateY(-2px);
-    }
-
-    /* Navigation with Glassmorphism */
-    header {
+    body::before {
+      content: "";
       position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(7, 11, 20, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-subtle);
-      transition: all 0.3s ease;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        url('https://m.media-amazon.com/images/I/51NiGlapXlL._AC_SY445_.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/0/0a/Avengers_Endgame_poster.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/6/66/Inception_ver3.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/7/7a/1917poster.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/en/9/99/Black_Panther_film_poster.jpg');
+      background-position:
+        top left, top right, center top, bottom left, bottom right, center bottom;
+      background-repeat: no-repeat;
+      background-size: 20% auto;
+      filter: brightness(0.25) blur(10px);
+      z-index: -1;
+      pointer-events: none;
     }
-    .navbar {
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+      background-color: rgba(0,0,0,0.55);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+    }
+
+    /* Header */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 0;
-      flex-wrap: wrap;
-    }
-    .logo h1 {
-      font-size: 1.6rem;
-      letter-spacing: -0.5px;
-      transition: transform 0.3s ease;
-    }
-    .logo:hover h1 {
-      transform: scale(1.02);
-    }
-    .logo span {
-      color: var(--primary);
-      text-shadow: 0 0 10px rgba(0,242,192,0.5);
-    }
-    .founder-tag {
-      font-size: 0.7rem;
-      color: var(--gray-text);
-      letter-spacing: 1px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #e2e8f0;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    .nav-links a:after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover:after {
-      width: 100%;
-    }
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-    .nav-wa {
-      background: var(--whatsapp);
-      padding: 8px 20px;
-      border-radius: 40px;
-      color: #0a0c12 !important;
-      font-weight: 700;
-    }
-    .nav-wa:after {
-      display: none;
-    }
-    .nav-wa:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(37,211,102,0.4);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e50914;
+      margin-bottom: 2rem;
     }
 
-    /* Hero with animated gradient */
-    .hero {
-      padding: 160px 0 100px;
-      background: radial-gradient(circle at 80% 20%, rgba(0,242,192,0.08), transparent 70%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0,242,192,0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: gridMove 20s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes gridMove {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(0, 242, 192, 0.12);
-      border: 1px solid rgba(0, 242, 192, 0.3);
-      padding: 6px 16px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      margin-bottom: 24px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      line-height: 1.2;
-      max-width: 800px;
-      animation: fadeInUp 0.8s ease;
-    }
-    .hero h1 .highlight {
-      color: var(--primary);
-      text-shadow: 0 0 20px rgba(0,242,192,0.5);
-      animation: glow 2s ease-in-out infinite;
-    }
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 10px rgba(0,242,192,0.5); }
-      50% { text-shadow: 0 0 25px rgba(0,242,192,0.8); }
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--gray-text);
-      max-width: 600px;
-      margin: 24px 0;
-      animation: fadeInUp 0.8s ease 0.2s backwards;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      animation: fadeInUp 0.8s ease 0.4s backwards;
+    header h1 {
+      font-size: 2.5rem;
+      color: #e50914;
+      letter-spacing: 3px;
+      user-select: none;
     }
 
-    /* Services Cards with Hover 3D */
-    .services-section {
-      padding: 100px 0;
-      background: var(--dark-surface);
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 28px;
-      margin-top: 20px;
-    }
-    .service-card {
-      background: var(--dark-card);
-      border-radius: 24px;
-      padding: 32px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(255,255,255,0.03);
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,242,192,0.1), transparent);
-      transition: left 0.6s;
-    }
-    .service-card:hover::before {
-      left: 100%;
-    }
-    .service-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: rgba(0, 242, 192, 0.5);
-      box-shadow: 0 20px 35px -15px rgba(0,242,192,0.3);
-    }
-    .service-icon {
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s ease;
-    }
-    .service-card:hover .service-icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    /* Academy Programs with Stagger Animation */
-    .academy-section {
-      padding: 100px 0;
-      background: var(--dark-bg);
-    }
-    .program-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .tab-btn {
-      background: transparent;
-      border: 2px solid rgba(0, 242, 192, 0.3);
-      padding: 12px 32px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    nav a {
       color: #fff;
-      font-family: inherit;
-      position: relative;
-      overflow: hidden;
-    }
-    .tab-btn:hover {
-      transform: translateY(-2px);
-    }
-    .tab-btn.active {
-      background: var(--primary);
-      color: #03050b;
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(0,242,192,0.5);
-    }
-    .tab-btn.offensive:hover, .tab-btn.offensive.active {
-      background: var(--offensive);
-      border-color: var(--offensive);
-      color: white;
-    }
-    .tab-btn.defensive:hover, .tab-btn.defensive.active {
-      background: var(--defensive);
-      border-color: var(--defensive);
-      color: white;
-    }
-    .programs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-    }
-    .program-card {
-      background: var(--dark-card);
-      border-radius: 28px;
-      padding: 32px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(255,255,255,0.05);
-      position: relative;
-      overflow: hidden;
-      animation: fadeInUp 0.6s ease;
-    }
-    .program-card:hover {
-      transform: translateY(-12px);
-      border-color: var(--primary);
-      box-shadow: 0 25px 40px -20px rgba(0,242,192,0.4);
-    }
-    .program-badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      animation: slideInRight 0.5s ease;
-    }
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    .badge-offensive {
-      background: var(--offensive);
-      color: white;
-      box-shadow: 0 0 10px rgba(255,77,77,0.5);
-    }
-    .badge-defensive {
-      background: var(--defensive);
-      color: white;
-      box-shadow: 0 0 10px rgba(77,121,255,0.5);
-    }
-    .program-card h3 {
-      font-size: 1.5rem;
-      margin: 20px 0 12px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 1.5rem;
       transition: color 0.3s ease;
     }
-    .program-card:hover h3 {
-      color: var(--primary);
-    }
-    .program-modules li {
-      padding: 6px 0;
-      color: #b9c3d4;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.3s ease;
-    }
-    .program-modules li:hover {
-      transform: translateX(5px);
-      color: var(--primary);
+
+    nav a:hover {
+      color: #e50914;
     }
 
-    /* CTA Block with Pulsing Effect */
-    .cta-block {
-      background: linear-gradient(135deg, #0a1020, #03060e);
-      margin: 40px 0 80px;
-      border-radius: 48px;
-      padding: 60px 40px;
+    /* Hero Section */
+    .hero {
       text-align: center;
-      border: 1px solid rgba(0,242,192,0.25);
-      position: relative;
-      overflow: hidden;
+      margin-bottom: 3rem;
     }
-    .cta-block::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0,242,192,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: rotate 30s linear infinite;
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 12px #e50914;
     }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .whatsapp-mega {
-      background: var(--whatsapp);
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 44px;
-      border-radius: 60px;
+
+    .hero p {
       font-size: 1.3rem;
-      font-weight: 800;
-      color: #121212;
-      text-decoration: none;
-      margin: 24px 0 16px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      margin-bottom: 2rem;
+      color: #ddd;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .whatsapp-mega:hover {
-      background: #20b359;
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(37,211,102,0.6);
+
+    .btn-primary {
+      background-color: #e50914;
+      color: #fff;
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(229, 9, 20, 0.7);
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #b00611;
+      box-shadow: 0 7px 20px rgba(176, 6, 17, 0.9);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    section h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #e50914;
+      display: inline-block;
+      padding-bottom: 0.25rem;
+      user-select: none;
+    }
+
+    /* About Section */
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 850px;
+      margin: 0 auto;
+      color: #ddd;
+    }
+
+    /* Features Section */
+    #features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-card h4 {
+      margin-bottom: 1rem;
+      color: #e50914;
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      color: #eee;
+      line-height: 1.4;
+    }
+
+    /* How It Works Section */
+    #how-it-works ol {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #ddd;
+      padding-left: 1.5rem;
+    }
+
+    /* Contact Section */
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    #contact input, 
+    #contact textarea {
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      resize: none;
+      font-family: inherit;
+    }
+
+    #contact textarea {
+      min-height: 120px;
+    }
+
+    #contact button {
+      background-color: #e50914;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(229, 9, 20, 0.7);
+      transition: background-color 0.3s ease;
+    }
+
+    #contact button:hover {
+      background-color: #b00611;
+      box-shadow: 0 7px 20px rgba(176, 6, 17, 0.9);
     }
 
     /* Footer */
     footer {
-      background: #05080f;
-      padding: 60px 0 30px;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #bbb;
+      user-select: none;
+      letter-spacing: 1px;
+      margin-top: 3rem;
     }
 
-    @media (max-width: 900px) {
-      .container {
-        padding: 0 24px;
-      }
-      .navbar {
+    /* Responsive */
+    @media (max-width: 700px) {
+      header {
         flex-direction: column;
-        gap: 12px;
-      }
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
         gap: 1rem;
       }
-      .hero h1 {
-        font-size: 2.3rem;
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
       }
-      .programs-grid {
-        grid-template-columns: 1fr;
+      .hero h2 {
+        font-size: 2.2rem;
       }
-    }
-
-    /* Scroll Reveal Classes */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
 <body>
-
-<header>
   <div class="container">
-    <div class="navbar">
-      <div class="logo">
-        <h1>THE EYE<span> OF CYBER</span></h1>
-        <div class="founder-tag">FOUNDER: HUMAYUN ALI KHAN</div>
+    <header>
+      <h1>FreeFlix</h1>
+      <nav>
+        <a href="#about">About Us</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Unlimited Netflix Access for Everyone</h2>
+      <p>FreeFlix provides you with safe, secure, and affordable access to Netflix’s vast library of movies and series. No hidden fees. No hassle. Just pure entertainment.</p>
+      <a href="login.html" class="btn-primary">Get Started Now</a>
+    </section>
+
+    <section id="about">
+      <h3>About FreeFlix</h3>
+      <p>
+        Established in 2023, FreeFlix is a pioneering company dedicated to bringing the best of Netflix to users around the globe. We leverage advanced technologies and partnerships to provide seamless, reliable, and affordable Netflix streaming access — all within a secure and user-friendly platform.
+      </p>
+    </section>
+
+    <section id="features">
+      <h3>Features</h3>
+      <div class="feature-card">
+        <h4>Wide Netflix Access</h4>
+        <p>Enjoy unrestricted access to Netflix’s entire library of movies, shows, and documentaries without geographical restrictions.</p>
       </div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#academy-page">Academy</a></li>
-        <li><a href="#company">Company</a></li>
-        <li><a href="#contact" class="nav-wa"><i class="fab fa-whatsapp"></i> Reserve Seat</a></li>
-      </ul>
-    </div>
+      <div class="feature-card">
+        <h4>High-Speed Streaming</h4>
+        <p>Experience buffer-free streaming with our optimized servers designed to handle high traffic and deliver quality video.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Multiple Device Support</h4>
+        <p>Stream on any device you prefer — smartphones, tablets, smart TVs, or desktops — all with a single account.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Secure & Private</h4>
+        <p>Your privacy is our priority. We ensure secure connections and data protection with end-to-end encryption.</p>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <h3>How It Works</h3>
+      <ol>
+        <li>Sign up and create your FreeFlix account with simple steps.</li>
+        <li>Choose your preferred subscription plan tailored to your needs.</li>
+        <li>Access Netflix content through our proprietary streaming portal or supported devices.</li>
+        <li>Enjoy unlimited streaming with dedicated customer support available 24/7.</li>
+      </ol>
+    </section>
+
+    <section id="contact">
+      <h3>Contact Us</h3>
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Full Name" required />
+        <input type="email" name="email" placeholder="Your Email Address" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
   </div>
-</header>
 
-<main>
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-badge"><i class="fas fa-shield-haltered"></i> Elite Offensive & Defensive Security</div>
-      <h1>Protecting Digital Frontiers<br> with <span class="highlight">Battle-Hardened</span> Expertise</h1>
-      <p>The Eye Of Cyber — founded by Humayun Ali Khan, delivers enterprise-grade red teaming, penetration testing, SIEM engineering, and data protection services. Trusted by industry leaders.</p>
-      <div class="hero-buttons">
-        <a href="https://wa.me/923162890580?text=Hello%20Eye%20Of%20Cyber%2C%20I%20need%20a%20professional%20consultation." target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Book Consultation</a>
-        <a href="#academy-page" class="btn-outline"><i class="fas fa-graduation-cap"></i> View Academy Programs</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="services-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Cyber Security Arsenal</h2>
-        <div class="section-subtitle">Comprehensive security assessments & managed services — from adversary simulation to SIEM engineering.</div>
-      </div>
-      <div class="services-grid">
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-skull-crossbones"></i></div><h3>Red Teaming</h3><p>Full-scope adversary simulation, TTP emulation, and breach & attack simulation to test your defense posture.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-code"></i></div><h3>API Penetration Testing</h3><p>REST/GraphQL/SOAP security assessments, business logic flaws, injection, and mass assignment vulnerabilities.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Application Testing</h3><p>iOS & Android deep-dive: reverse engineering, insecure storage, runtime manipulation & compliance checks.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-network-wired"></i></div><h3>Network Penetration Testing</h3><p>Internal/external infrastructure, firewall evasion, lateral movement & segmentation testing.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-user-shield"></i></div><h3>Active Directory Pentesting</h3><p>Kerberoasting, ACL abuse, golden ticket, ADCS attacks & full domain compromise simulation.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>Cloud Pentesting</h3><p>AWS/Azure/GCP misconfigurations, IAM privilege escalation, container breakout & serverless risks.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-globe"></i></div><h3>Website Pentesting</h3><p>OWASP Top 10, business logic attacks, authentication bypass & advanced WAF evasion techniques.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-file-code"></i></div><h3>Source Code Review</h3><p>Manual & automated SAST, backdoor identification, insecure deserialization & supply chain risks.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-database"></i></div><h3>Data Security</h3><p>Data classification, DLP strategy, encryption at rest/transit, and GDPR/PCI-DSS compliance.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>SIEM Engineering</h3><p>Splunk, QRadar, Microsoft Sentinel — custom correlation rules, log management, threat hunting & SOAR integration.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-eye"></i></div><h3>Threat Hunting & DFIR</h3><p>Proactive threat hunting, incident response, forensic analysis & adversary tracking.</p></div>
-        <div class="service-card fade-up"><div class="service-icon"><i class="fas fa-shield-virus"></i></div><h3>Vulnerability Management</h3><p>End-to-end VM lifecycle, prioritization, remediation guidance & continuous monitoring.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Academy Page Section - Offensive & Defensive Programs -->
-  <section id="academy-page" class="academy-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>🎓 The Eye Of Cyber Academy</h2>
-        <div class="section-subtitle">World-class training programs led by Humayun Ali Khan and elite practitioners. Choose your path — Offensive or Defensive.</div>
-      </div>
-      
-      <div class="program-tabs">
-        <button class="tab-btn offensive active" data-tab="offensive"><i class="fas fa-skull"></i> Offensive Security</button>
-        <button class="tab-btn defensive" data-tab="defensive"><i class="fas fa-shield-alt"></i> Defensive Security</button>
-      </div>
-
-      <!-- Offensive Programs -->
-      <div id="offensive-programs" class="programs-grid active-tab">
-        <div class="program-card fade-up">
-          <div class="program-badge badge-offensive">Offensive</div>
-          <i class="fas fa-user-secret" style="font-size: 2rem; color: var(--offensive);"></i>
-          <h3>Red Team Operator</h3>
-          <div class="program-duration"><i class="far fa-clock"></i> 12 Weeks | Advanced</div>
-          <p class="program-description">Master adversary simulation, C2 frameworks, evasion techniques, and full-scope red team engagements.</p>
-          <ul class="program-modules">
-            <li><i class="fas fa-chevron-right"></i> Cobalt Strike & Sliver C2</li>
-            <li><i class="fas fa-chevron-right"></i> Advanced Evasion & Bypass</li>
-            <li><i class="fas fa-chevron-right"></i> Active Directory Attacks</li>
-            <li><i class="fas fa-chevron-right"></i> Lateral Movement & Persistence</li>
-          </ul>
-          <div class="program-footer">
-            <span class="program-price">Live Mentorship</span>
-            <a href="#" class="btn-primary enroll-btn" style="margin-top: 15px; display: inline-block; padding: 8px 24px;"><i class="fab fa-whatsapp"></i> Enroll Now</a>
-          </div>
-        </div>
-
-        <div class="program-card fade-up">
-          <div class="program-badge badge-offensive">Offensive</div>
-          <i class="fas fa-code" style="font-size: 2rem; color: var(--offensive);"></i>
-          <h3>Advanced Web & API Hacking</h3>
-          <div class="program-duration"><i class="far fa-clock"></i> 8 Weeks | Intermediate</div>
-          <p class="program-description">Deep-dive into modern web vulnerabilities, API security, GraphQL attacks, and advanced exploitation.</p>
-          <ul class="program-modules">
-            <li><i class="fas fa-chevron-right"></i> OWASP Top 10 & Beyond</li>
-            <li><i class="fas fa-chevron-right"></i> GraphQL & REST API Attacks</li>
-            <li><i class="fas fa-chevron-right"></i> JWT & Auth Bypass Techniques</li>
-            <li><i class="fas fa-chevron-right"></i> WAF Evasion & Automation</li>
-          </ul>
-          <div class="program-footer">
-            <span class="program-price">Hands-on Labs</span>
-            <a href="#" class="btn-primary enroll-btn" style="margin-top: 15px; display: inline-block; padding: 8px 24px;"><i class="fab fa-whatsapp"></i> Enroll Now</a>
-          </div>
-        </div>
-
-        <div class="program-card fade-up">
-          <div class="program-badge badge-offensive">Offensive</div>
-          <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--offensive);"></i>
-          <h3>Cloud Penetration Testing</h3>
-          <div class="program-duration"><i class="far fa-clock"></i> 6 Weeks | Advanced</div>
-          <p class="program-description">Attack AWS, Azure, GCP environments. IAM exploitation, container escapes, and serverless hacking.</p>
-          <ul class="program-modules">
-            <li><i class="fas fa-chevron-right"></i> AWS/Azure Privilege Escalation</li>
-            <li><i class="fas fa-chevron-right"></i> Kubernetes & Container Attacks</li>
-            <li><i class="fas fa-chevron-right"></i> Serverless Security Testing</li>
-            <li><i class="fas fa-chevron-right"></i> Cloud Misconfigurations</li>
-          </ul>
-          <div class="program-footer">
-            <span class="program-price">Cloud Labs Included</span>
-            <a href="#" class="btn-primary enroll-btn" style="margin-top: 15px; display: inline-block; padding: 8px 24px;"><i class="fab fa-whatsapp"></i> Enroll Now</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Defensive Programs -->
-      <div id="defensive-programs" class="programs-grid" style="display: none;">
-        <div class="program-card fade-up">
-          <div class="program-badge badge-defensive">Defensive</div>
-          <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--defensive);"></i>
-          <h3>SIEM Engineering & SOC Analyst</h3>
-          <div class="program-duration"><i class="far fa-clock"></i> 10 Weeks | Intermediate</div>
-          <p class="program-description">Master SIEM platforms (Splunk, Sentinel), correlation rules, threat hunting, and incident response workflows.</p>
-          <ul class="program-modules">
-            <li><i class="fas fa-chevron-right"></i> Splunk & KQL Mastery</li>
-            <li><i class="fas fa-chevron-right"></i> Custom Detection Rules</li>
-            <li><i class="fas fa-chevron-right"></i> Threat Intelligence Integration</li>
-            <li><i class="fas fa-chevron-right"></i> SOAR Automation</li>
-          </ul>
-          <div class="program-footer">
-            <span class="program-price">Live SOC Environment</span>
-            <a href="#" class="btn-primary enroll-btn" style="margin-top: 15px; display: inline-block; padding: 8px 24px;"><i class="fab fa-whatsapp"></i> Enroll Now</a>
-          </div>
-        </div>
-
-        <div class="program-card fade-up">
-          <div class="program-badge badge-defensive">Defensive</div>
-          <i class="fas fa-shield-virus" style="font-size: 2rem; color: var(--defensive);"></i>
-          <h3>Threat Hunting & DFIR</h3>
-          <div class="program-duration"><i class="far fa-clock"></i> 8 Weeks | Advanced</div>
-          <p class="program-description">Proactive threat hunting, digital forensics, memory analysis, and incident response strategies.</p>
-          <ul class="program-modules">
-            <li><i class="fas fa-chevron-right"></i> EDR Telemetry Analysis</li>
-            <li><i class="fas fa-chevron-right"></i> Memory Forensics (Volatility)</li>
-            <li><i class="fas fa-chevron-right"></i> Attack Reconstruction</li>
-            <li><i class="fas fa-chevron-right"></i> Malware Analysis Basics</li>
-          </ul>
-          <div class="program-footer">
-            <span class="program-price">IR Simulations</span>
-            <a href="#" class="btn-primary enroll-btn" style="margin-top: 15px; display: inline-block; padding: 8px 24px;"><i class="fab fa-whatsapp"></i> Enroll Now</a>
-          </div>
-        </div>
-
-        <div class="program-card fade-up">
-          <div class="program-badge badge-defensive">Defensive</div>
-          <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--defensive);"></i>
-          <h3>Blue Team Operations</h3>
-          <div class="program-duration"><i class="far fa-clock"></i> 8 Weeks | Intermediate</div>
-          <p class="program-description">Build defensive capabilities: security monitoring, hardening, incident handling, and purple team exercises.</p>
-          <ul class="program-modules">
-            <li><i class="fas fa-chevron-right"></i> Security Monitoring & Alerting</li>
-            <li><i class="fas fa-chevron-right"></i> System Hardening (CIS Benchmarks)</li>
-            <li><i class="fas fa-chevron-right"></i> Purple Team Collaboration</li>
-            <li><i class="fas fa-chevron-right"></i> Security Automation</li>
-          </ul>
-          <div class="program-footer">
-            <span class="program-price">Certification Prep</span>
-            <a href="#" class="btn-primary enroll-btn" style="margin-top: 15px; display: inline-block; padding: 8px 24px;"><i class="fab fa-whatsapp"></i> Enroll Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Founder Spotlight -->
-  <section class="founder-section" style="padding: 80px 0; background: var(--dark-surface);">
-    <div class="container">
-      <div class="founder-card" style="background: linear-gradient(135deg, #0c1120 0%, #080c18 100%); border-radius: 32px; padding: 50px; display: flex; flex-wrap: wrap; gap: 50px; border: 1px solid rgba(0,242,192,0.2);">
-        <div class="founder-info" style="flex: 2;">
-          <h3>Humayun Ali Khan</h3>
-          <div class="founder-title" style="color: var(--primary); margin-bottom: 20px;">Founder & Principal Security Architect</div>
-          <p>With over a decade of experience in offensive security, red team operations, and cyber resilience, Humayun leads The Eye Of Cyber with a mission to bridge the gap between advanced adversary tactics and enterprise defense.</p>
-          <div class="founder-quote" style="border-left: 3px solid var(--primary); padding-left: 24px; margin: 28px 0;">
-            "Cyber security isn't just about tools — it's about mindset, creativity, and relentless pursuit of security excellence."
-          </div>
-          <a href="#" class="btn-primary founder-wa" style="margin-top: 12px;"><i class="fab fa-whatsapp"></i> Connect on WhatsApp</a>
-        </div>
-        <div class="founder-stats" style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 24px; padding: 28px; text-align: center;">
-          <div><i class="fas fa-trophy" style="font-size: 2rem; color: var(--primary);"></i></div>
-          <div class="stat-number" style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">150+</div>
-          <div>Completed Engagements</div>
-          <div class="stat-number" style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-top: 24px;">500+</div>
-          <div>Students Trained</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Company Overview -->
-  <section id="company" style="padding: 80px 0;">
-    <div class="container">
-      <div class="section-header">
-        <h2>Why Industry Leaders Choose Us</h2>
-        <div class="section-subtitle">Precision, stealth, and enterprise-grade security posture.</div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin: 40px 0;">
-        <div class="fade-up" style="background: var(--dark-card); padding: 32px; border-radius: 24px; text-align: center;"><i class="fas fa-chart-simple" style="font-size: 2rem; color: var(--primary);"></i><h3 style="margin: 18px 0 10px;">Real-World Simulations</h3><p style="color: var(--gray-text);">We emulate advanced persistent threats (APTs) to test your detection & response.</p></div>
-        <div class="fade-up" style="background: var(--dark-card); padding: 32px; border-radius: 24px; text-align: center;"><i class="fas fa-file-signature" style="font-size: 2rem; color: var(--primary);"></i><h3 style="margin: 18px 0 10px;">Compliance Ready</h3><p style="color: var(--gray-text);">ISO27001, SOC2, PCI-DSS, HIPAA — full audit & remediation support.</p></div>
-        <div class="fade-up" style="background: var(--dark-card); padding: 32px; border-radius: 24px; text-align: center;"><i class="fas fa-headset" style="font-size: 2rem; color: var(--primary);"></i><h3 style="margin: 18px 0 10px;">24/7 Security Operations</h3><p style="color: var(--gray-text);">SIEM monitoring, threat hunting, and rapid incident response.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Block: WhatsApp Booking -->
-  <div class="container">
-    <div class="cta-block" id="contact">
-      <i class="fab fa-whatsapp" style="font-size: 3.2rem; color: var(--whatsapp);"></i>
-      <h2 style="border-left: none;">Ready to Secure Your Organization?</h2>
-      <p style="color: var(--gray-text); font-size: 1.1rem; max-width: 550px; margin: 0 auto;">Reserve a seat in our training programs or schedule a free consultation with Humayun Ali Khan's team.</p>
-      <a href="#" class="whatsapp-mega cta-wa-btn">
-        <i class="fab fa-whatsapp"></i> RESERVE SEAT VIA WHATSAPP
-        <i class="fas fa-arrow-right"></i>
-      </a>
-      <p><i class="fas fa-phone-alt"></i> +92 316 2890580 — Direct line for inquiries</p>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
-      <div class="footer-col">
-        <h4>The Eye Of Cyber</h4>
-        <p>Elite cyber security firm founded by Humayun Ali Khan. Specializing in Red Teaming, Pentesting, SIEM, and Data Security.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <p>Red Teaming</p><p>API / Mobile / Network Pentesting</p><p>Cloud & AD Security</p>
-      </div>
-      <div class="footer-col">
-        <h4>Academy</h4>
-        <p>Offensive Programs</p><p>Defensive Programs</p><p>Live Mentorship</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p><i class="fab fa-whatsapp"></i> +92 316 2890580</p>
-        <p><i class="fas fa-envelope"></i> contact@eyeofcyber.com</p>
-      </div>
-    </div>
-    <div class="copyright" style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05);">
-      <p>© 2025 The Eye Of Cyber — Founded by Humayun Ali Khan. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // Tab switching functionality
-  const offensiveBtn = document.querySelector('.tab-btn.offensive');
-  const defensiveBtn = document.querySelector('.tab-btn.defensive');
-  const offensivePrograms = document.getElementById('offensive-programs');
-  const defensivePrograms = document.getElementById('defensive-programs');
-
-  function switchToOffensive() {
-    offensiveBtn.classList.add('active');
-    defensiveBtn.classList.remove('active');
-    offensivePrograms.style.display = 'grid';
-    defensivePrograms.style.display = 'none';
-  }
-
-  function switchToDefensive() {
-    defensiveBtn.classList.add('active');
-    offensiveBtn.classList.remove('active');
-    defensivePrograms.style.display = 'grid';
-    offensivePrograms.style.display = 'none';
-  }
-
-  offensiveBtn.addEventListener('click', switchToOffensive);
-  defensiveBtn.addEventListener('click', switchToDefensive);
-
-  // Scroll Reveal Animation
-  const fadeElements = document.querySelectorAll('.fade-up');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  fadeElements.forEach(el => observer.observe(el));
-
-  // WhatsApp Integration
-  const whatsappNumber = "923162890580";
-  
-  function openWhatsApp(message) {
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
-  }
-
-  // All WhatsApp buttons
-  document.querySelectorAll('.nav-wa, .btn-primary, .whatsapp-mega, .enroll-btn, .founder-wa, .cta-wa-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      let message = "Hello Eye Of Cyber, I'd like to reserve a seat and learn more about your services.";
-      
-      if (btn.closest('.program-card')) {
-        const programName = btn.closest('.program-card')?.querySelector('h3')?.innerText;
-        if (programName) message = `I'm interested in the ${programName} program. Please share details and pricing.`;
-      } else if (btn.classList.contains('founder-wa')) {
-        message = "Hi, I'd like to connect with Humayun Ali Khan regarding cyber security services.";
-      } else if (btn.classList.contains('cta-wa-btn')) {
-        message = "Hi, I want to reserve a seat for cyber security training/services.";
-      }
-      
-      openWhatsApp(message);
-    });
-  });
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === "#" || href === "" || href.includes("wa.me")) return;
-      if (href.startsWith("#")) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-
-  // Trigger initial visible check
-  setTimeout(() => {
-    fadeElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        el.classList.add('visible');
-      }
-    });
-  }, 100);
-</script>
+  <footer>
+    &copy; 2025 FreeFlix, Inc. All rights reserved. | <a href="#" style="color:#e50914; text-decoration:none;">Privacy Policy</a> | <a href="#" style="color:#e50914; text-decoration:none;">Terms of Service</a>
+  </footer>
 </body>
 </html>
